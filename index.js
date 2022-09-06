@@ -1,9 +1,9 @@
 import { argv } from 'node:process';
 import chalk from 'chalk';
-import randomcolor from 'randomcolor';
+import randomColor from 'randomcolor';
 
-const randomColorHex = randomcolor();
-const canvasForReturn = createCanvas();
+const hue = argv[3];
+const luminosity = argv[2];
 
 // functions for creating strings of # and space
 function createStringOfHashTags(stringLength) {
@@ -14,35 +14,44 @@ function createStringOfHashTags(stringLength) {
   return StringOfHsahTags;
 }
 
-function createEmptyString(stringLength) {
-  let emptyString = '';
+function createStringOfSpaces(stringLength) {
+  let stringOfSpaces = '';
   for (let i = 0; i < stringLength; i++) {
-    emptyString += ' ';
+    stringOfSpaces += ' ';
   }
-  return emptyString;
+  return stringOfSpaces;
+}
+
+function createColor() {
+  return randomColor({
+    hue: hue,
+    luminosity: luminosity,
+  });
 }
 
 // create the output canvas with the hex code
-function createCanvas() {
+function createColoredCanvas(hex) {
   let canvas;
   canvas = `
   ${createStringOfHashTags(39)}
   ${createStringOfHashTags(39)}
   ${createStringOfHashTags(39)}
-  ${createStringOfHashTags(5)}${createEmptyString(29)}${createStringOfHashTags(
-    5,
-  )}
-  ${createStringOfHashTags(5)}${createEmptyString(
+  ${createStringOfHashTags(5)}${createStringOfSpaces(
+    29,
+  )}${createStringOfHashTags(5)}
+  ${createStringOfHashTags(5)}${createStringOfSpaces(
     11,
-  )}${randomColorHex}${createEmptyString(11)}${createStringOfHashTags(5)}
-  ${createStringOfHashTags(5)}${createEmptyString(29)}${createStringOfHashTags(
-    5,
-  )}
+  )}${hex}${createStringOfSpaces(11)}${createStringOfHashTags(5)}
+  ${createStringOfHashTags(5)}${createStringOfSpaces(
+    29,
+  )}${createStringOfHashTags(5)}
   ${createStringOfHashTags(39)}
   ${createStringOfHashTags(39)}
   `;
-  return canvas;
+  return chalk.hex(hex)(canvas);
 }
 
+const randomColorHex = createColor();
+
 // log result to the console
-console.log(chalk.hex(randomColorHex)(canvasForReturn));
+console.log(createColoredCanvas(randomColorHex));

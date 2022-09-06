@@ -7,11 +7,11 @@ const luminosity = argv[2];
 
 // functions for creating strings of # and space
 function createStringOfHashTags(stringLength) {
-  let StringOfHsahTags = '';
+  let string = '';
   for (let i = 0; i < stringLength; i++) {
-    StringOfHsahTags += '#';
+    string += '#';
   }
-  return StringOfHsahTags;
+  return string;
 }
 
 function createStringOfSpaces(stringLength) {
@@ -31,8 +31,7 @@ function createColor() {
 
 // create the output canvas with the hex code
 function createColoredCanvas(hex) {
-  let canvas;
-  canvas = `
+  const canvas = `
   ${createStringOfHashTags(39)}
   ${createStringOfHashTags(39)}
   ${createStringOfHashTags(39)}

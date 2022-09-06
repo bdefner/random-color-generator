@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import randomcolor from 'randomcolor';
 
 const randomColorHex = randomcolor();
-const returnCanvas = createCanvas();
+const canvasForReturn = createCanvas();
 
 // functions for creating strings of # and space
 function createStringOfHashTags(stringLength) {
@@ -45,4 +45,4 @@ function createCanvas() {
 }
 
 // log result to the console
-console.log(chalk.hex(randomColorHex)(returnCanvas));
+console.log(chalk.hex(randomColorHex)(canvasForReturn));

@@ -5,21 +5,13 @@ import randomColor from 'randomcolor';
 const hue = argv[3];
 const luminosity = argv[2];
 
-// functions for creating strings of # and space
-function createStringOfHashTags(stringLength) {
+// function for creating strings of # and spaces
+function createString(character, stringLength) {
   let string = '';
   for (let i = 0; i < stringLength; i++) {
-    string += '#';
+    string += character;
   }
   return string;
-}
-
-function createStringOfSpaces(stringLength) {
-  let stringOfSpaces = '';
-  for (let i = 0; i < stringLength; i++) {
-    stringOfSpaces += ' ';
-  }
-  return stringOfSpaces;
 }
 
 function createColor() {
@@ -32,20 +24,18 @@ function createColor() {
 // create the output canvas with the hex code
 function createColoredCanvas(hex) {
   const canvas = `
-  ${createStringOfHashTags(39)}
-  ${createStringOfHashTags(39)}
-  ${createStringOfHashTags(39)}
-  ${createStringOfHashTags(5)}${createStringOfSpaces(
-    29,
-  )}${createStringOfHashTags(5)}
-  ${createStringOfHashTags(5)}${createStringOfSpaces(
+  ${createString('#', 39)}
+  ${createString('#', 39)}
+  ${createString('#', 39)}
+  ${createString('#', 5)}${createString(' ', 29)}${createString('#', 5)}
+  ${createString('#', 5)}${createString(' ', 11)}${hex}${createString(
+    ' ',
     11,
-  )}${hex}${createStringOfSpaces(11)}${createStringOfHashTags(5)}
-  ${createStringOfHashTags(5)}${createStringOfSpaces(
-    29,
-  )}${createStringOfHashTags(5)}
-  ${createStringOfHashTags(39)}
-  ${createStringOfHashTags(39)}
+  )}${createString('#', 5)}
+  ${createString('#', 5)}${createString(' ', 29)}${createString('#', 5)}
+  ${createString('#', 39)}
+  ${createString('#', 39)}
+  ${createString('#', 39)}
   `;
   return chalk.hex(hex)(canvas);
 }

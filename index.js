@@ -2,8 +2,8 @@ import { argv } from 'node:process';
 import chalk from 'chalk';
 import randomColor from 'randomcolor';
 
-const hue = argv[3];
-const luminosity = argv[2];
+const hue = argv[2];
+const luminosity = argv[3];
 
 // function for creating strings of # and spaces
 function createString(character, stringLength) {
@@ -24,18 +24,18 @@ function createColor() {
 // create the output canvas with the hex code
 function createColoredCanvas(hex) {
   const canvas = `
-  ${createString('#', 39)}
-  ${createString('#', 39)}
-  ${createString('#', 39)}
-  ${createString('#', 5)}${createString(' ', 29)}${createString('#', 5)}
-  ${createString('#', 5)}${createString(' ', 11)}${hex}${createString(
+  ${createString('#', 31)}
+  ${createString('#', 31)}
+  ${createString('#', 31)}
+  ${createString('#', 5)}${createString(' ', 21)}${createString('#', 5)}
+  ${createString('#', 5)}${createString(' ', 7)}${hex}${createString(
     ' ',
-    11,
+    7,
   )}${createString('#', 5)}
-  ${createString('#', 5)}${createString(' ', 29)}${createString('#', 5)}
-  ${createString('#', 39)}
-  ${createString('#', 39)}
-  ${createString('#', 39)}
+  ${createString('#', 5)}${createString(' ', 21)}${createString('#', 5)}
+  ${createString('#', 31)}
+  ${createString('#', 31)}
+  ${createString('#', 31)}
   `;
   return chalk.hex(hex)(canvas);
 }

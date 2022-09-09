@@ -23,20 +23,18 @@ function createColor() {
 
 // create the output canvas with the hex code
 function createColoredCanvas(hex) {
-  const canvas = `
-  ${createString('#', 31)}
-  ${createString('#', 31)}
-  ${createString('#', 31)}
-  ${createString('#', 5)}${createString(' ', 21)}${createString('#', 5)}
-  ${createString('#', 5)}${createString(' ', 7)}${hex}${createString(
+  const canvas = `${createString('#', 31)}
+${createString('#', 31)}
+${createString('#', 31)}
+${createString('#', 5)}${createString(' ', 21)}${createString('#', 5)}
+${createString('#', 5)}${createString(' ', 7)}${hex}${createString(
     ' ',
     7,
   )}${createString('#', 5)}
-  ${createString('#', 5)}${createString(' ', 21)}${createString('#', 5)}
-  ${createString('#', 31)}
-  ${createString('#', 31)}
-  ${createString('#', 31)}
-  `;
+${createString('#', 5)}${createString(' ', 21)}${createString('#', 5)}
+${createString('#', 31)}
+${createString('#', 31)}
+${createString('#', 31)}`;
   return chalk.hex(hex)(canvas);
 }
 
